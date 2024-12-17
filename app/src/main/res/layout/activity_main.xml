@@ -1,80 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/xui_config_color_white"
+    android:orientation="vertical"
+    tools:ignore="Overdraw">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btnCleanLog"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="90dp"
-        android:contentDescription="@string/clean_log"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_delete"
-        app:borderWidth="0dp"
-        app:elevation="5dp"
-        app:fabSize="mini" />
-
-    <LinearLayout
-        android:id="@+id/radioGroup"
+    <FrameLayout
+        android:id="@id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="5dip"
-        android:orientation="horizontal">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-        <RadioGroup
-            android:id="@+id/radioGroupTypeCheck"
-            style="@style/rg_style"
-            android:layout_width="match_parent"
-            android:gravity="center"
-            android:orientation="horizontal">
+    </FrameLayout>
 
-            <RadioButton
-                android:id="@+id/btnTypeSms"
-                style="@style/select_style"
-                android:checked="true"
-                android:tag="sms"
-                android:text="@string/sms" />
+    <View style="@style/SeparatorStyle.Vertical" />
 
-            <RadioButton
-                android:id="@+id/btnTypeCall"
-                style="@style/select_style"
-                android:tag="call"
-                android:text="@string/call" />
-
-            <RadioButton
-                android:id="@+id/btnTypeApp"
-                style="@style/select_style"
-                android:tag="app"
-                android:text="@string/app" />
-        </RadioGroup>
-
-    </LinearLayout>
-
-    <com.idormy.sms.forwarder.RefreshListView
-        android:id="@+id/list_view_log"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabs"
+        style="@style/TabLayoutStyle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/radioGroup"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="85dp" />
+        android:layout_height="?attr/xui_actionbar_height"
+        android:contentDescription="@string/description_navigation_main"
+        app:tabBackground="@null"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/xui_config_color_transparent"
+        app:tabMinWidth="300dp"
+        app:tabMode="fixed"
+        app:tabPaddingTop="2dp"
+        app:tabTextAppearance="@style/TabText.Explain" />
 
-    <com.idormy.sms.forwarder.view.StepBar
-        android:id="@+id/stepBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        app:current_step="main"
-        app:help_tip="@string/log_tips" />
-
-</RelativeLayout>
+</LinearLayout>
